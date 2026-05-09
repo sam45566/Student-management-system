@@ -1,0 +1,76 @@
+/*
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class mainPage extends JFrame implements ActionListener {
+    //defines dimensions
+    Rectangle bi = new Rectangle();
+    JButton registerButton;
+    JButton SLButton;
+
+    JButton exitButton;
+
+    public mainPage() {
+        this.setLayout((LayoutManager)null);
+        this.bi.setBounds(80, 400, 230, 40);
+        JLabel title = new JLabel("Student management ");
+        title.setFont(new Font("Serif", 1, 17));
+        title.setBounds(90, 50, 250, 40);
+        title.setVisible(true);
+        this.add(title, "Center");
+        this.registerButton = new JButton("Register");
+        this.registerButton.setBounds(this.bi.x, this.bi.y - 300, this.bi.width, this.bi.height);
+        this.registerButton.setFocusable(false);
+        this.registerButton.setBackground(Color.LIGHT_GRAY);
+        this.registerButton.setForeground(Color.BLACK);
+        this.registerButton.setFont(new Font("Tahoma", 1, 12));
+        this.registerButton.setVisible(true);
+        this.registerButton.addActionListener(this);
+        this.add(this.registerButton);
+        this.SLButton = new JButton("List all students");
+        this.SLButton.setBounds(this.bi.x, this.bi.y - 250, this.bi.width, this.bi.height);
+        this.SLButton.setFocusable(false);
+        this.SLButton.setBackground(Color.LIGHT_GRAY);
+        this.SLButton.setForeground(Color.BLACK);
+        this.SLButton.setFont(new Font("Tahoma", 1, 12));
+        this.SLButton.setVisible(true);
+        this.SLButton.addActionListener(this);
+        this.add(this.SLButton);
+
+        this.exitButton = new JButton("EXIT");
+        this.exitButton.setBounds(this.bi.x, this.bi.y - 150, this.bi.width, this.bi.height);
+        this.exitButton.setFocusable(false);
+        this.exitButton.setBackground(Color.LIGHT_GRAY);
+        this.exitButton.setForeground(Color.BLACK);
+        this.exitButton.setFont(new Font("Tahoma", 1, 12));
+        this.exitButton.setVisible(true);
+        this.exitButton.addActionListener(this);
+        this.add(this.exitButton);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == this.registerButton) {
+            this.dispose();
+            registerFrame regpage = new registerFrame();
+            regpage.setTitle("Student management ");
+            regpage.setDefaultCloseOperation(3);
+            regpage.setSize(400, 400);
+            regpage.setLocationRelativeTo((Component)null);
+            regpage.setVisible(true);
+        } else if (e.getSource() == this.SLButton) {
+            this.dispose();
+            showAllStudents showpage = new showAllStudents();
+            showpage.setTitle("Student management ");
+            showpage.setDefaultCloseOperation(3);
+            showpage.setSize(900, 700);
+            showpage.setLocationRelativeTo((Component)null);
+            showpage.setVisible(true);
+                } else if (e.getSource() == this.exitButton) {
+            this.dispose();
+        }
+    }
+}
+*/

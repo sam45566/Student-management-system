@@ -1,0 +1,182 @@
+
+import javax.swing.;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.LayoutManager;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+public class registerFrame extends JFrame implements ActionListener{
+    Rectangle bi = new Rectangle();
+    JButton doneButton;
+    JButton addButton;
+    JLabel fnamelabel;
+    JLabel lnamelabel;
+    JLabel deplabel;
+    JLabel agelabel;
+    JLabel yearlabel;
+    JTextField fname;
+    JTextField lname;
+    JComboBox dep;
+    JSpinner ageyear;
+    JSpinner agemonth;
+    JSpinner ageday;
+    JSpinner entryYear;
+    String a = null;
+    String b = ;
+    String c = ;
+    String d = ;
+    String f = ;
+    String g = ;
+    int lid = 0;
+
+    private void drawDesign() {
+        this.setLayout((LayoutManager)null);
+        this.bi.setBounds(80, 400, 230, 40);
+        this.fnamelabel = new JLabel(First Name);
+        this.fnamelabel.setBounds(this.bi.x - 70, this.bi.y - 380, this.bi.width - 100, this.bi.height - 10);
+        this.fnamelabel.setVisible(true);
+        this.add(this.fnamelabel);
+        this.fname = new JTextField();
+        this.fname.setBounds(this.bi.x, this.bi.y - 377, this.bi.width + 60, this.bi.height - 12);
+        this.fname.setVisible(true);
+        this.add(this.fname);
+        this.lnamelabel = new JLabel(Last Name);
+        this.lnamelabel.setBounds(this.bi.x - 70, this.bi.y - 330, this.bi.width - 100, this.bi.height - 10);
+        this.lnamelabel.setVisible(true);
+        this.add(this.lnamelabel);
+        this.lname = new JTextField();
+        this.lname.setBounds(this.bi.x, this.bi.y - 327, this.bi.width + 60, this.bi.height - 12);
+        this.lname.setVisible(true);
+        this.add(this.lname);
+        this.deplabel = new JLabel(Depatment);
+        this.deplabel.setBounds(this.bi.x - 70, this.bi.y - 280, this.bi.width - 100, this.bi.height - 10);
+        this.deplabel.setVisible(true);
+        this.add(this.deplabel);
+        this.dep = new JComboBox();
+        this.dep.setBounds(this.bi.x, this.bi.y - 277, this.bi.width + 60, this.bi.height - 12);
+        this.dep.setVisible(true);
+        this.dep.addItem(Computer Science);
+        this.dep.addItem(software engineer  );
+        this.dep.addItem(data scince);
+        this.add(this.dep);
+        this.agelabel = new JLabel(Date of birth);
+        this.agelabel.setBounds(this.bi.x - 72, this.bi.y - 230, this.bi.width - 100, this.bi.height - 10);
+        this.agelabel.setVisible(true);
+        this.add(this.agelabel);
+        SpinnerNumberModel ageYearmodel = new SpinnerNumberModel(2000, 1990, Integer.MAX_VALUE, 1);
+        this.ageyear = new JSpinner(ageYearmodel);
+        this.ageyear.setBounds(this.bi.x, this.bi.y - 227, this.bi.width - 150, this.bi.height - 12);
+        this.ageyear.setVisible(true);
+        this.add(this.ageyear);
+        SpinnerNumberModel ageMonthmodel = new SpinnerNumberModel(1, 1, 12, 1);
+        this.agemonth = new JSpinner(ageMonthmodel);
+        this.agemonth.setBounds(this.bi.x + this.bi.x + 10, this.bi.y - 227, this.bi.width - 180, this.bi.height - 12);
+        this.agemonth.setVisible(true);
+        this.add(this.agemonth);
+        SpinnerNumberModel ageDaymodel = new SpinnerNumberModel(1, 1, 30, 1);
+        this.ageday = new JSpinner(ageDaymodel);
+        this.ageday.setBounds(this.bi.x + this.bi.x + this.bi.x + 10, this.bi.y - 227, this.bi.width - 180, this.bi.height - 12);
+        this.ageday.setVisible(true);
+        this.add(this.ageday);
+        this.yearlabel = new JLabel(Entry Year);
+        this.yearlabel.setBounds(this.bi.x - 70, this.bi.y - 180, this.bi.width - 100, this.bi.height - 10);
+        this.yearlabel.setVisible(true);
+        this.add(this.yearlabel);
+        SpinnerNumberModel yearmodel = new SpinnerNumberModel(2024, 2024, Integer.MAX_VALUE, 1);
+        this.entryYear = new JSpinner(yearmodel);
+        this.entryYear.setBounds(this.bi.x, this.bi.y - 177, this.bi.width - 150, this.bi.height - 12);
+        this.entryYear.setVisible(true);
+        this.add(this.entryYear);
+        this.addButton = new JButton(Register);
+        this.addButton.setBounds(this.bi.x - 70, this.bi.y - 130, this.bi.width - 60, this.bi.height);
+        this.addButton.setFocusable(false);
+        this.addButton.setBackground(Color.LIGHT_GRAY);
+        this.addButton.setForeground(Color.BLACK);
+        this.addButton.setFont(new Font(Tahoma, 1, 12));
+        this.addButton.setVisible(true);
+        this.addButton.addActionListener(this);
+        this.add(this.addButton);
+        this.doneButton = new JButton(Return);
+        this.doneButton.setBounds(this.bi.x + 122, this.bi.y - 130, this.bi.width - 60, this.bi.height);
+        this.doneButton.setFocusable(false);
+        this.doneButton.setBackground(Color.LIGHT_GRAY);
+        this.doneButton.setForeground(Color.BLACK);
+        this.doneButton.setFont(new Font(Tahoma, 1, 12));
+        this.doneButton.setVisible(true);
+        this.doneButton.addActionListener(this);
+        this.add(this.doneButton);
+    }
+    public void registerProcess() {
+        String url = ;
+
+        try {
+            Class.forName(com.mysql.cj.jdbc.Driver);
+
+            Connection con = DriverManager.getConnection(jdbcmysqllocalhost3306student_management, root, Alex@1234);
+            Statement query = con.createStatement();
+            ResultSet rs = query.executeQuery(SELECT id from stud_data_db);
+            int id = 0;
+
+            while(rs.next()) {
+                id = rs.getInt(id);
+                System.out.println(id);
+            }
+
+            ++id;
+            String sql = insert into stud_data_db values( + id + ,' + this.fname.getText() +
+                    ',' + this.lname.getText() + ',' + String.valueOf(this.dep.getSelectedItem()) +
+                    ',' + String.valueOf(this.ageyear.getValue()) + - + String.valueOf(this.agemonth.getValue()) +
+                    - + String.valueOf(this.ageday.getValue()) + ',' + String.valueOf(this.entryYear.getValue()) + ');;
+            int i = query.executeUpdate(sql);
+            if (i  0) {
+                System.out.println(ROW INSERTED);
+            } else {
+                System.out.println(ROW NOT INSERTED);
+            }
+
+            JOptionPane.showMessageDialog((Component)null, Registry succsessfulnYour ID is  + id);
+        } catch (Exception var8) {
+            JOptionPane.showMessageDialog((Component)null, nope + String.valueOf(var8));
+        }
+
+    }
+
+    public registerFrame() {
+        this.drawDesign();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(this.addButton)) {
+            this.registerProcess();
+        } else if (e.getSource().equals(this.doneButton)) {
+            this.dispose();
+            mainPage page = new mainPage();
+            page.setTitle(student_management );
+            page.setDefaultCloseOperation(3);
+            page.setSize(400, 400);
+            page.setLocationRelativeTo((Component)null);
+            page.setVisible(true);
+        }
+
+    }
+
+}
+
+
+
+
